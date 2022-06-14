@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Viveiro  <mat-icon class="mat-18">local_florist</mat-icon>
+    </ion-title>
+    <button  (click)="alteradorLogin(true)" *ngIf="!login">Login</button>
+    <button  (click)="deslogar()" *ngIf="login">sair</button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title>Vivieiro <mat-icon class="mat-18">local_florist</mat-icon></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <mat-card class="adr catalogo"  *ngIf="!alteradorlogin">
+      <mat-card-content>
+        <h1 routerLink="/catalogo"> Catalogo <br> <mat-icon style="color: rgb(0, 0, 0)">menu</mat-icon></h1>
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+      <mat-card-content  *ngIf="!alteradorlogin">
+        <h2>Gerenciamento de Catalogo</h2>
+        <ul style="text-align: start;" *ngIf="login">
+          <li class="adr"><h1 routerLink="/gereciamento-catalogo-flores"><mat-icon style="color: red">hdr_strong</mat-icon>Flores</h1></li>
+          <li class="adr"><h1 routerLink="/gerenciamento-catalogo-sementes"><mat-icon style="color: green">hdr_weak</mat-icon>Sementes</h1></li>
+          <li class="adr"><h1 routerLink="/gerenciamento-catalogo-arbustos"><mat-icon style="color: blue">hdr_strong</mat-icon>Arbustos</h1></li>
+          <li class="adr"><h1 routerLink="/gerenciamento-catalogo-arvores"><mat-icon>hdr_weak</mat-icon>Arvores</h1></li>
+          <li class="adr"><h1 routerLink="/gerenciamento-catalogo-plantas-medicinais"><mat-icon style="color: purple">hdr_strong</mat-icon>Plantas Medicinais</h1></li>
+        </ul>
+      </mat-card-content>
+
+
+
+
+    <mat-card class="example-card" *ngIf="!alteradorlogin">
+      <mat-card-content>
+          <p>By jacare</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card-content *ngIf="alteradorlogin" class="example-form">
+      <h1>Realize seu login</h1>
+      <button mat-icon-button (click)="alteradorLogin(false)">
+        <mat-icon>reply</mat-icon>
+      </button>
+      <mat-form-field class="login" appearance="fill">
+        <mat-label class="active">Usuario</mat-label>
+        <input matInput [(ngModel)]="usuario.nome" type="text" placeholder="Ex. admin">
+      </mat-form-field>
+      <mat-form-field class="login" appearance="fill">
+        <mat-label class="active">Senha</mat-label>
+        <input matInput [(ngModel)]="usuario.senha" type="password" placeholder="Ex. 1234">
+      </mat-form-field>
+      <button (click)="[fazerLogin(), alteradorLogin(false)]" mat-raised-button color="warn">Entrar</button>
+    </mat-card-content>
+
+  </div>
+</ion-content>
+
+
